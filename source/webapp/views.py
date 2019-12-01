@@ -17,3 +17,99 @@ def api_example(request, *args, **kwargs):
     response = HttpResponse(data_json)
     response['Content-Type'] = 'application/json'
     return response
+
+@csrf_exempt
+def add(request, *args, **kwargs):
+    if request.method == 'POST':
+        if request.body:
+            number_data = json.loads(request.body)
+            A = number_data.get('A')
+            B = number_data.get('B')
+            try:
+                A = int(number_data.get('A'))
+                B = int(number_data.get('B'))
+                return JsonResponse({'answer': A + B})
+            except ValueError:
+                response = JsonResponse({'error': 'This not number!'})
+                response.status_code = 400
+                print(response)
+                return response
+
+        else:
+            response = JsonResponse({'error' : 'No data provided'})
+            response.status_code = 400
+            return response
+
+@csrf_exempt
+def subtract(request, *args, **kwargs):
+    if request.method == 'POST':
+        if request.body:
+            number_data = json.loads(request.body)
+            A = number_data.get('A')
+            B = number_data.get('B')
+            try:
+                A = int(number_data.get('A'))
+                B = int(number_data.get('B'))
+                return JsonResponse({'answer': A - B})
+            except ValueError:
+                response = JsonResponse({'error': 'This not number!'})
+                response.status_code = 400
+                print(response)
+                return response
+
+        else:
+            response = JsonResponse({'error' : 'No data provided'})
+            response.status_code = 400
+            return response
+
+@csrf_exempt
+def multiply(request, *args, **kwargs):
+    if request.method == 'POST':
+        if request.body:
+            number_data = json.loads(request.body)
+            A = number_data.get('A')
+            B = number_data.get('B')
+            try:
+                A = int(number_data.get('A'))
+                B = int(number_data.get('B'))
+                return JsonResponse({'answer': A * B})
+            except ValueError:
+                response = JsonResponse({'error': 'This not number!'})
+                response.status_code = 400
+                print(response)
+                return response
+
+        else:
+            response = JsonResponse({'error' : 'No data provided'})
+            response.status_code = 400
+            return response
+
+
+@csrf_exempt
+def divide(request, *args, **kwargs):
+    if request.method == 'POST':
+        if request.body:
+            number_data = json.loads(request.body)
+            A = number_data.get('A')
+            B = number_data.get('B')
+            try:
+                A = int(number_data.get('A'))
+                B = int(number_data.get('B'))
+                if A == 0 or B == 0:
+                    response = JsonResponse({'error': 'Division by zero!'})
+                    response.status_code = 400
+                    return response
+                else:
+                    return JsonResponse({'answer': A / B})
+
+            except ValueError:
+                response = JsonResponse({'error': 'This not number!'})
+                response.status_code = 400
+                print(response)
+                return response
+
+        else:
+            response = JsonResponse({'error' : 'No data provided'})
+            response.status_code = 400
+            return response
+
