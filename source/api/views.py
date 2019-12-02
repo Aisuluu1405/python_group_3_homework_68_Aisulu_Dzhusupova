@@ -21,7 +21,7 @@ def api_example(request, *args, **kwargs):
 
 
 @csrf_exempt
-def add(request, *args, **kwargs):
+def add_numbers(request, *args, **kwargs):
     if request.method == 'POST':
         if request.body:
             number_data = json.loads(request.body)
@@ -34,7 +34,6 @@ def add(request, *args, **kwargs):
             except ValueError:
                 response = JsonResponse({'error': 'This not number!'})
                 response.status_code = 400
-                print(response)
                 return response
 
         else:
@@ -44,7 +43,7 @@ def add(request, *args, **kwargs):
 
 
 @csrf_exempt
-def subtract(request, *args, **kwargs):
+def subtract_numbers(request, *args, **kwargs):
     if request.method == 'POST':
         if request.body:
             number_data = json.loads(request.body)
@@ -57,7 +56,6 @@ def subtract(request, *args, **kwargs):
             except ValueError:
                 response = JsonResponse({'error': 'This not number!'})
                 response.status_code = 400
-                print(response)
                 return response
 
         else:
@@ -67,7 +65,7 @@ def subtract(request, *args, **kwargs):
 
 
 @csrf_exempt
-def multiply(request, *args, **kwargs):
+def multiply_numbers(request, *args, **kwargs):
     if request.method == 'POST':
         if request.body:
             number_data = json.loads(request.body)
@@ -80,7 +78,6 @@ def multiply(request, *args, **kwargs):
             except ValueError:
                 response = JsonResponse({'error': 'This not number!'})
                 response.status_code = 400
-                print(response)
                 return response
 
         else:
@@ -90,7 +87,7 @@ def multiply(request, *args, **kwargs):
 
 
 @csrf_exempt
-def divide(request, *args, **kwargs):
+def divide_numbers(request, *args, **kwargs):
     if request.method == 'POST':
         if request.body:
             number_data = json.loads(request.body)
@@ -109,7 +106,6 @@ def divide(request, *args, **kwargs):
             except ValueError:
                 response = JsonResponse({'error': 'This not number!'})
                 response.status_code = 400
-                print(response)
                 return response
 
         else:
